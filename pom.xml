@@ -48,12 +48,12 @@
 		<repository>
 			<id>releases</id>
 			<name>nexus3 maven-releases</name>
-			<url>http://localhost:8081/repository/maven-snapshots/</url>
+			<url>http://192.168.223.128:8081/repository/maven-releases/</url>
 		</repository>
 		<snapshotRepository>
 			<id>snapshots</id>
 			<name>nexus3 maven-snapshots</name>
-			<url>http://localhost:8081/repository/maven-snapshots/</url>
+			<url>http://192.168.223.128:8081/repository/maven-snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 </project>
