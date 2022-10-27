@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
+		<artifactId>base-dependencies</artifactId>
 		<groupId>com.lc</groupId>
-		<artifactId>base</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
@@ -16,44 +16,95 @@
 		<java.version>1.8</java.version>
 	</properties>
 
-	<dependencies>
-		<!-- spring boot -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.micrometer</groupId>
-			<artifactId>micrometer-registry-prometheus</artifactId>
-		</dependency>
-		<!--annotations-->
-		<dependency>
-			<groupId>org.jetbrains</groupId>
-			<artifactId>annotations</artifactId>
-			<version>15.0</version>
-		</dependency>
-	</dependencies>
-
-	<build>
-	<plugins>
-
-	</plugins>
-	</build>
 
 	<distributionManagement>
 		<repository>
 			<id>releases</id>
-			<name>nexus3 maven-releases</name>
-			<url>http://192.168.223.128:8081/repository/maven-releases/</url>
+			<name>local-release-repository</name>
+			<url>file:D:\tools\maven\repository</url>
 		</repository>
 		<snapshotRepository>
-			<id>snapshots</id>
-			<name>nexus3 maven-snapshots</name>
-			<url>http://192.168.223.128:8081/repository/maven-snapshots/</url>
+			<id>snapshot</id>
+			<name>local-snap-repository</name>
+			<url>file:D:\tools\maven\repository</url>
 		</snapshotRepository>
 	</distributionManagement>
+	<dependencies>
+		<!--spring cloud openfeign-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+			<version>3.1.4</version>
+		</dependency>
+		<!-- spring boot -->
+		<dependency>
+			<!--解决注解ConfigurationProperties报错-->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+		</dependency>
+		<!--热部署-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+		<!--服务注册与发现-->
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+		</dependency>
+		<!--nacos 配置中心-->
+<!--		<dependency>-->
+<!--			&lt;!&ndash;spring cloud 2020.x之后默认不引入bootstrap， 而启用nacos配置中心需要此依赖&ndash;&gt;-->
+<!--			<groupId>org.springframework.cloud</groupId>-->
+<!--			<artifactId>spring-cloud-starter-bootstrap</artifactId>-->
+<!--		</dependency>-->
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!--参数校验注解-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<!--lombok-->
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.6.7</version>
+			</plugin>
+		</plugins>
+	</build>
+
+<!--	<distributionManagement>-->
+<!--		<repository>-->
+<!--			<id>releases</id>-->
+<!--			<name>nexus3 maven-releases</name>-->
+<!--			<url>http://192.168.223.128:8081/repository/maven-releases/</url>-->
+<!--		</repository>-->
+<!--		<snapshotRepository>-->
+<!--			<id>snapshots</id>-->
+<!--			<name>nexus3 maven-snapshots</name>-->
+<!--			<url>http://192.168.223.128:8081/repository/maven-snapshots/</url>-->
+<!--		</snapshotRepository>-->
+<!--	</distributionManagement>-->
 </project>

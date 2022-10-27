@@ -1,6 +1,7 @@
 package com.luc.framework.core.util;
 
-import org.jetbrains.annotations.NotNull;
+
+import javax.validation.constraints.NotNull;
 
 /** 实现了该接口的类，具备分页操作的参数 rowStart pageIndex pageSize
  * @author: lucheng
@@ -9,11 +10,13 @@ import org.jetbrains.annotations.NotNull;
  */
 public interface PaginationParams {
 
+
     Integer getPageIndex();
 
-    void setPageIndex(@NotNull Integer pageIndex);
+    void setPageIndex( Integer pageIndex);
 
     Integer getPageSize();
+
 
     void setPageSize(@NotNull Integer pageSize);
 

@@ -6,6 +6,7 @@ package com.luc.framework.core.mvc;
  * @version: 1.0
  */
 public class Status {
+    public String nem;
     private Integer code;
     private String desc;
 
